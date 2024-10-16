@@ -1,6 +1,6 @@
 # theme-selector.nvim
 
-A Neovim plugin that lets you select and preview colorschemes via a floating window, like Mason does for LSPs.
+A small Neovim plugin that lets you select and preview colorschemes via a floating window.
 
 ## Installation
 
@@ -11,13 +11,12 @@ use 'Pepethefrogger/theme-selector.nvim'
 
 ## Configuration
 
-Setup lines
+The configuration is very simple:
 ```lua
 local theme_selector = require('theme-selector')
-theme_selector.setup{
-    test_on_the_fly = false, -- Default is true, changes configuration temporarily on change
-    default_theme = "tokyonight" -- Sets a default colorscheme to load
-}
+theme_selector.setup(false) -- Default is true, displays changes as you move in the menu
 
 vim.keymap.set('n', '<leader>TT', theme_selector.init_window)
 ```
+This simple config will find all of the colorschemes available and list them in a menu.
+If you want to go back to using a script for defining the colors, you can use the first option on the list.
