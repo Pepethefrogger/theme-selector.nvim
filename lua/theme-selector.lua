@@ -4,11 +4,11 @@ local test_on_the_fly = true
 
 local M = {}
 
-local state_filename = '/theme_data'
+local state_filename = '/theme_selector_data'
 local theme_selector_group = vim.api.nvim_create_augroup("ThemeSelectorGroup", {clear = true})
 
 local function save_theme(theme_name)
-    local file = io.open(vim.fn.stdpath('config') .. state_filename,'w+')
+    local file = io.open(vim.fn.stdpath('state') .. state_filename,'w+')
     if file then
         file:write(theme_name)
         file:close()
@@ -16,11 +16,11 @@ local function save_theme(theme_name)
 end
 
 local function unset_theme()
-    os.remove(vim.fn.stdpath('config') .. state_filename)
+    os.remove(vim.fn.stdpath('state') .. state_filename)
 end
 
 local function load_theme()
-    local file = io.open(vim.fn.stdpath('config') .. state_filename,'r')
+    local file = io.open(vim.fn.stdpath('state') .. state_filename,'r')
     if file then
         local theme = file:read('l')
         file:close()
